@@ -1,0 +1,108 @@
+using System.Data.Common;
+    double a,b,s;
+    int c,d, z,w;
+do
+{
+    Console.WriteLine("Виберiть операцiю, яку потрiбно виконати: ");
+    Console.WriteLine("1.Додавання;");
+    Console.WriteLine("2.Вiднiмання;");
+    Console.WriteLine("3.Множення;");
+    Console.WriteLine("4.Дiнення;");
+    Console.WriteLine("5.Знайти середнє арифметичне;");
+    Console.WriteLine("6.Дiлення по модулю;");
+    Console.WriteLine("7.Дiлення нацiло;");
+    Console.WriteLine("8.Знайти корiнь числа;");
+    Console.WriteLine("9.Пiднести число до степеня;");
+    z = Convert.ToInt32(Console.ReadLine()); ;
+    switch (z)
+    {
+        case 1:
+            Console.WriteLine("Введiть перше число");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть друге число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = a + b;
+            Console.WriteLine($"Результат: {a}+{b}={s}");
+            Console.WriteLine("");
+            break;
+        case 2:
+            Console.WriteLine("Введiть перше число");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть друге число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = a - b;
+            Console.WriteLine($"Результат: {a}-{b}={s}");
+            Console.WriteLine("");
+            break;
+        case 3:
+            Console.WriteLine("Введiть перше число");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть друге число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = a * b;
+            Console.WriteLine($"Результат: {a}*{b}={s}");
+            Console.WriteLine("");
+            break;
+        case 4:
+            Console.WriteLine("Введiть перше число");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть друге число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = a / b;
+            Console.WriteLine($"Результат:{a}/{b}={s}");
+            Console.WriteLine("");
+            break;
+        case 5:
+            Console.WriteLine("Введiть перше число");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть друге число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = (a + b) / 2;
+            Console.WriteLine($"Результат:середнє арифметичне чисел {a} i {b} дорівнює {s}");
+            Console.WriteLine("");
+            break;
+        case 6:
+            Console.WriteLine("Введiть перше цiле число");
+            c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введiть друге цiле число");
+            d = Convert.ToInt32(Console.ReadLine());
+            s = c % d;
+            Console.WriteLine($"Результат: {c}%{d}={s}");
+            Console.WriteLine("");
+            break;
+        case 7:
+            Console.WriteLine("Введiть перше цiле число");
+            c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введiть друге цiле число");
+            d = Convert.ToInt32(Console.ReadLine());
+            s = c / d;
+            Console.WriteLine($"Результат:{c}/{d}={s}");
+            Console.WriteLine("");
+            break;
+        case 8:
+            Console.WriteLine("Введiть додатнє число");
+            a = Convert.ToDouble(Console.ReadLine());
+            s = Math.Sqrt(a);
+            Console.WriteLine($"Результат: корiнь числа {a} дорiвнює {s}");
+            Console.WriteLine("");
+            break;
+        case 9:
+            Console.WriteLine("Введiть число,яке потрiбно пiднести до степеня");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Введiть степiнь до якого потрiбно пiднести число");
+            b = Convert.ToDouble(Console.ReadLine());
+            s = Math.Pow(a, b);
+            Console.WriteLine($"Результат: число {a} в степенi {b} дорiвнює {s}");
+            Console.WriteLine("");
+            break;
+        default:
+            Console.WriteLine("Помилка! Потрiбно ввести значення вiд 1 до 9.");
+            Console.WriteLine("");
+            break;
+    }
+    Console.WriteLine("Виконати ще одну дiю?");
+    Console.WriteLine("1.Так;");
+    Console.WriteLine("2.Нi;");
+    w = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("");
+} while (w == 1);
