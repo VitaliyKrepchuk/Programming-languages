@@ -1,0 +1,36 @@
+double x,y;
+int z;
+do
+{
+    do Console.WriteLine("Введiть значення аргументу (х) функцiї вiд -7 до 11");
+    while (!double.TryParse(Console.ReadLine().Replace('.', ','), out x) || x < -7 || x > 11) ;
+    if (x <= -3)
+    {
+        y = 3;
+        Console.WriteLine($"Значення функцiї (y) на графiку дорiвнює {y}");
+        Console.WriteLine("");
+    }
+    if (x > -3 && x <= 3)
+    {
+        y = -Math.Sqrt(9 - Math.Pow(x, 2)) + 3;
+        Console.WriteLine($"Значення функцiї (y) на графiку дорiвнює {y}");
+        Console.WriteLine("");
+    }
+    if (x > 3 && x < 6)
+    {
+        y = -2 * x + 9;
+        Console.WriteLine($"Значення функцiї (y) на графiку дорiвнює {y}");
+        Console.WriteLine("");
+    }
+    if (x >= 6)
+    {
+        y = x - 9;
+        Console.WriteLine($"Значення функцiї (y) на графiку дорiвнює {y}");
+        Console.WriteLine("");
+    }
+    Console.WriteLine("Виконати програму ще раз ?");
+    Console.WriteLine("1.Так;");
+    Console.WriteLine("2.Нi;");
+    z = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("");
+} while (z == 1);
