@@ -1,0 +1,192 @@
+using System;
+using System.Data;
+
+    class Point
+    {
+        public double x, y, x1, y1;
+        public Point(double _x, double _y)
+        {
+            x = _x;
+            y = _y;
+        }
+    }
+    class Triangle
+    {
+        public Point a { set; get; }
+        public Point b { set; get; }
+        public Point c { set; get; }
+
+        public Triangle(Point _a, Point _b, Point _c)   
+        {
+            a = _a;
+            b = _b;
+            c = _c;
+        }
+    public double AB, BC, AC;
+    public void input(Point _a, Point _b, Point _c)
+    {
+        
+        AB = Convert.ToDouble(Math.Sqrt(Math.Pow(_b.x - _a.x, 2) + Math.Pow(_b.y - _a.y, 2)));
+        BC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _b.x, 2) + Math.Pow(_c.y - _b.y, 2)));
+        AC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _a.x, 2) + Math.Pow(_c.y - _a.y, 2)));
+        if(AB+BC>AC && AB+AC>BC && AC + BC > AB) 
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Такий трикутник iснує:");
+            Console.WriteLine($"AB={AB:F2}\nBC={BC:F2}\nAC={AC:F2}");
+        }
+        else
+        {
+            Console.WriteLine("");
+            Console.WriteLine("На жаль такий трикутник не може iснувати.");
+        }
+    }
+       public double d;
+        public void vpravo()   
+        {
+            Console.WriteLine("");
+            Console.WriteLine("На скiльки одиниць ви хочете перемiстити трикутник?");
+            d=Convert.ToDouble(Console.ReadLine());
+            a.x +=d; b.x +=d; c.x+=d;
+            Console.WriteLine("Результат:");
+            Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y);
+        }
+        public void vlivo()   
+        {
+        Console.WriteLine("");
+        Console.WriteLine("На скiльки одиниць ви хочете перемiстити трикутник?");
+        d = Convert.ToDouble(Console.ReadLine());
+        a.x -=d; b.x-=d; c.x -=d;
+        Console.WriteLine("Результат:");
+        Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y);
+    }
+        public void vgory()  
+        {
+        Console.WriteLine("");
+        Console.WriteLine("На скiльки одиниць ви хочете перемiстити трикутник?");
+        d = Convert.ToDouble(Console.ReadLine());
+        a.y +=d; b.y +=d; c.y +=d;
+        Console.WriteLine("Результат:");
+        Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y); ;
+        }
+        public void vniz()    
+        {
+        Console.WriteLine("");
+        Console.WriteLine("На скiльки одиниць ви хочете перемiстити трикутник?");
+        d = Convert.ToDouble(Console.ReadLine());
+        a.y -=d; b.y -=d; c.y -=d;
+        Console.WriteLine("Результат:");
+        Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y);
+    }
+    
+    public void kyt()    
+        {
+        Console.WriteLine("");
+        Console.WriteLine("На який кут ви хочете повернути трикутник?");
+            d = Convert.ToDouble(Console.ReadLine());
+        a.x1 = Convert.ToSingle(a.x * Math.Cos(d * Math.PI / 180) - a.y * Math.Sin(d * Math.PI / 180));
+        a.y1 = Convert.ToSingle(a.x * Math.Sin(d * Math.PI / 180) + a.y * Math.Cos(d * Math.PI / 180));
+        b.x1 = Convert.ToSingle(b.x * Math.Cos(d * Math.PI / 180) - b.y * Math.Sin(d * Math.PI / 180));
+        b.y1 = Convert.ToSingle(b.x * Math.Sin(d * Math.PI / 180) + b.y * Math.Cos(d * Math.PI / 180));
+        c.x1 = Convert.ToSingle(c.x * Math.Cos(d * Math.PI / 180) - c.y * Math.Sin(d * Math.PI / 180));
+        c.y1 = Convert.ToSingle(c.x * Math.Sin(d * Math.PI / 180) + c.y * Math.Cos(d * Math.PI / 180));
+        Console.WriteLine("Результат:");
+        Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x1, a.y1, b.x1, b.y1, c.x1, c.y1);
+    }
+        public double k;
+        public void zbil(Point _a, Point _b, Point _c) 
+        {
+            Console.WriteLine("");
+            Console.WriteLine("У скiльки разiв ви хочете збiльшити розмiри трикутника?");
+            k  = Convert.ToDouble(Console.ReadLine());
+           a.x *= k;
+           a.y *= k;
+           b.x *= k;
+           b.y *= k;
+           c.x *= k;
+           c.y *= k;
+           AB = Convert.ToDouble(Math.Sqrt(Math.Pow(_b.x - _a.x, 2) + Math.Pow(_b.y - _a.y, 2)));
+           BC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _b.x, 2) + Math.Pow(_c.y - _b.y, 2)));
+           AC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _a.x, 2) + Math.Pow(_c.y - _a.y, 2)));
+           Console.WriteLine("Результат:");
+           Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y);
+           Console.WriteLine($"AB={AB:F2}\nBC={BC:F2}\nAC={AC:F2}");
+    }
+    public void zmen(Point _a, Point _b, Point _c) 
+    {
+        Console.WriteLine("");
+        Console.WriteLine("У скiльки разiв ви хочете зменшити розмiри трикутника?");
+        k = Convert.ToDouble(Console.ReadLine());
+        a.x /=k;
+        a.y /=k;
+        b.x /=k;
+        b.y /=k;
+        c.x /=k;
+        c.y /=k;
+        AB = Convert.ToDouble(Math.Sqrt(Math.Pow(_b.x - _a.x, 2) + Math.Pow(_b.y - _a.y, 2)));
+        BC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _b.x, 2) + Math.Pow(_c.y - _b.y, 2)));
+        AC = Convert.ToDouble(Math.Sqrt(Math.Pow(_c.x - _a.x, 2) + Math.Pow(_c.y - _a.y, 2)));
+        Console.WriteLine("Результат:");
+        Console.WriteLine("A(x;y)=({0:F2};{1:F2})\nB(x;y)=({2:F2};{3:F2})\nC(x;y)=({4:F2};{5:F2})", a.x, a.y, b.x, b.y, c.x, c.y);
+        Console.WriteLine($"AB={AB:F2}\nBC={BC:F2}\nAC={AC:F2}");
+    }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+        Console.WriteLine("Введiть координати вершини A (x;y)");
+        Point a = new Point(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+        Console.WriteLine("Введiть координати вершини B (x;y)");
+        Point b = new Point(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+        Console.WriteLine("Введiть координати вершини C (x;y)");
+        Point c = new Point(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine()));
+        Console.WriteLine("A(x;y)=({0};{1})\nB(x;y)=({2};{3})\nC(x;y)=({4};{5})", a.x, a.y, b.x, b.y, c.x, c.y);
+        Triangle T = new Triangle(a, b, c);
+        int choice;
+        do
+        {
+            
+            Console.WriteLine("");
+            Console.WriteLine("Яку операцiю ви хочете виконати?");
+            Console.WriteLine("1.Визначити чи iснує такий трикутник;");
+            Console.WriteLine("2.Перемiстити вправо;");
+            Console.WriteLine("3.Перемiстити влiво;");
+            Console.WriteLine("4.Перемiстити вгору;");
+            Console.WriteLine("5.Перемiстити вниз;");
+            Console.WriteLine("6.Обертання на заданий кут;");
+            Console.WriteLine("7.Збiльшення розмiрiв;");
+            Console.WriteLine("8.Зменшення розмiрiв;");
+            Console.WriteLine("9.Зупинити програму;");
+            choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    T.input(a, b, c);
+                    break;
+                case 2:
+                    T.vpravo();
+                    break;
+                case 3:
+                    T.vlivo();
+                    break;
+                case 4:
+                    T.vgory();
+                    break;
+                case 5:
+                    T.vniz();
+                    break;
+                case 6:
+                    T.kyt();
+                    break;
+                case 7:
+                    T.zbil(a,b,c);
+                    break;
+                case 8:
+                    T.zmen(a,b,c);
+                    break;
+            }
+        } while (choice != 9);
+        }
+    }
