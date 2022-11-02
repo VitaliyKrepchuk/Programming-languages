@@ -1,0 +1,42 @@
+double x1, x2, dx, e, n, y;
+int w, sumn;
+do
+{
+    const double Maxx1 = 1;
+    Console.WriteLine("Введiть x початкове ( |x| < 1 ):");
+    x1 = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Введiть х кiнцеве ( |x| < 1 ):");
+    x2 = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Введiть точнiсть:");
+    e = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Введiть крок:");
+    dx = Convert.ToDouble(Console.ReadLine());
+    Console.WriteLine("Таблиця значень функцiї, заданої з допомогою ряду Тейлора");
+    Console.WriteLine("|     X  |     Y  |    N |");
+    for (; x1 < x2; x1 += dx)
+    {
+        bool done = true;
+        sumn = 0;
+        y = 0;
+        double znach = 1.0;
+        for (n = 1; Math.Abs(znach) > e; n += 2, sumn++)
+        {
+            znach = 2.0 * (Math.Pow(x1,n) / n);
+            y += znach;
+            if (x1 < Maxx1)
+                continue;
+            done = false;
+            break;
+        }
+        if (done)
+            Console.WriteLine("| {0,6:F3} | {1,6:F3} | {2,4} |", x1, y, sumn);
+        else
+            Console.WriteLine("| {0,6:F3} | Ряд не зiйшовся|", x1);
+    }
+    Console.WriteLine("");
+    Console.WriteLine("Виконати ще одну дiю?");
+    Console.WriteLine("1.Так;");
+    Console.WriteLine("2.Нi;");
+    w = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("");
+} while (w==1);
