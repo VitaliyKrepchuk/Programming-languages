@@ -1,0 +1,96 @@
+using System.Globalization;
+const int n =10;
+const int m = 10;
+int [,] A = new int[n,m];
+int i, j,r,s;
+Console.WriteLine("Введiть кiлькiсть рядкiв :");
+r=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Введiть кiлькiсть стовпцiв:");
+s = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine ("Введiть елементи матрицi:");
+for ( i = 0; i < r; i++)
+{
+    for ( j = 0; j < s; j++)
+    {
+        A[i, j] = Convert.ToInt32(Console.ReadLine()) ;
+    }
+    Console.WriteLine("");
+}
+Console.WriteLine("Вихiдна матриця:");
+for ( i = 0; i < r; i++)
+{
+    for ( j = 0; j < s; j++)
+    {
+        Console.Write("{0}\t",A[i,j]);
+    }
+    Console.WriteLine("");
+}
+int  el= 0;
+int k = 0;
+for ( i = 0; i < r; ++i)
+{
+    for ( j = 0; j < s; ++j)
+    {
+        if (A[i, j] == 0)
+        {
+            ++el;
+        }
+    }
+    if (el == 0)
+    {
+        ++k;
+    }
+    else
+    {
+        el = 0;
+    }
+}
+Console.WriteLine();
+Console.WriteLine("Кiлькiсть рядкiв, якi не мiстять жодного нульового елемента:{0}",k);
+Console.WriteLine();
+int max = 0;
+int k1 = 0;
+for ( i = 0; i < r; ++i)
+{
+    for ( j = 0; j < s; ++j)
+    {
+        if (A[i, j] == max)
+        {
+            ++k1;
+        }
+
+        if (A[i, j] > max)
+        {
+            max = A[i, j];
+            k1 = 1;
+        }
+
+    }
+}
+while (k1 < 2)
+{
+    if (k1 <= 1)
+    {
+        int max1 = max;
+        max = 0;
+        k1 = 0;
+        for ( i = 0; i < r; ++i)
+        {
+            for ( j = 0; j < s; ++j)
+            {
+                if ((A[i, j] == max) && (A[i, j] < max1))
+                {
+                    ++k1;
+                }
+
+                if ((A[i, j] > max) && (A[i, j] < max1))
+                {
+                    max = A[i, j];
+                    k1 = 1;
+                }
+
+            }
+        }
+    }
+}
+Console.WriteLine("Максимальне з чисел, що зустрiчаються в заданiй матрицi бiльше одного разу:{0}", max);
