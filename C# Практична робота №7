@@ -1,0 +1,11 @@
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
+Regex regex = new Regex("\\d{2,}");
+using (StreamReader f = new StreamReader("d:\\Практична робота №7.txt"))
+    while (!f.EndOfStream)
+    {
+        string str = f.ReadLine();
+        if (regex.IsMatch(str))
+            Console.WriteLine(str);
+    }
