@@ -1,0 +1,177 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Text;
+
+    class Matrix
+    {
+        private int a, b, c, d;
+        public Matrix(int a, int b)
+        {
+            Random r = new Random();
+        for (int i = 0; i < a; i++)
+        {
+            for (int j = 0; j < b; j++)
+            {
+                M[i, j] = r.Next(-100, 100);
+            }
+        }
+        }
+        public int[,] M = new int[100, 100];
+
+        public void vyvid(int c, int d) 
+        {
+        Console.WriteLine("");
+        Console.WriteLine("Вихiдна матриця довiльного розмiру:");
+        for (int i = 0; i < c; i++)
+        {
+            for (int j = 0; j < d; j++)
+            {
+                Console.Write(M[i, j] + "\t");
+            }
+                Console.WriteLine("");
+        }
+        }
+    public class submatrix
+    {
+        public submatrix(ref int[,] submatr, int a, int b)
+        {
+            A = a; B = b;
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    Array[i, j] = submatr[i, j];
+                }
+            }
+        }
+
+        private int A, B;
+        private int[,] Array = new int[100, 100];
+
+        public void showArray()
+        {
+            for (int i = 0; i < A; i++)
+            {
+                for (int j = 0; j < B; j++)
+                {
+                    Console.Write(Array[i, j] + "\t");
+                }
+                Console.WriteLine("");
+            }
+        }
+    }
+
+    public void dostyp( int e, int f) 
+    {
+        
+        Console.WriteLine("Результат: {0}",M[e-1, f-1]);
+    }
+    public class newmatrix
+    {
+        public newmatrix(ref int[,] newmatr, int a, int b)
+        {
+            C = a; D = b;
+            for (int i = 0; i < a; i++)
+            {
+                for (int j = 0; j < b; j++)
+                {
+                    newArray[i, j] = newmatr[i, j];
+                }
+            }
+        }
+
+        private int C, D;
+        private int[,] newArray = new int[100, 100];
+
+        public void shownewArray()
+        {
+            for (int i = 0; i < C; i++)
+            {
+                for (int j = 0; j < D; j++)
+                {
+                    Console.Write(newArray[i, j] + "\t");
+                }
+                Console.WriteLine("");
+            }
+        }
+    }
+}
+
+    class Program
+    {
+    static void Main(string[] args)
+    {
+            int a, b, c, d,e ,f,g,h;
+            Random m = new Random();
+            a= m.Next(3, 15);
+            b = m.Next(3, 15);
+            Matrix mat = new Matrix(a, b);
+            mat.vyvid(a, b);
+            int choice;
+        do
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Що ви хочете зробити?");
+            Console.WriteLine("1. Доступ за iндексами до елемента матрицi; ");
+            Console.WriteLine("2. Виведення пiдматрицi;");
+            Console.WriteLine("3. Змiна кiлькостi рядкiв та стовпцiв матрицi;");
+            Console.WriteLine("4. Завершити програму;");
+            choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    do
+                    {
+                        Console.WriteLine("Введiть номер рядка в якому знаходиться елемент (вiд 1 до {0}):", a);
+                        e = Convert.ToInt32(Console.ReadLine());
+                    } while (e < 1 || e > a);
+                    do
+                    {
+                        Console.WriteLine("Введiть номер стовпця в якому знаходиться елемент (вiд 1 до {0}):", b);
+                        f = Convert.ToInt32(Console.ReadLine());
+                    } while (f < 1 || f > b);
+                    mat.dostyp(e, f);
+                    break;
+                case 2:
+                    Console.WriteLine("");
+                    do
+                    {
+                        Console.WriteLine("Введiть кiлькiсть рядкiв пiдматрицi (вiд 1 до {0}):", a);
+                        c = Convert.ToInt32(Console.ReadLine());
+                    } while (c < 1 || c > a);
+                    do
+                    {
+                        Console.WriteLine("Введiть кiлькiсть стовпцiв пiдматрицi (вiд 1 до {0})", b);
+                        d = Convert.ToInt32(Console.ReadLine());
+                    } while (d < 1 || d > b);
+                    Matrix.submatrix A = new Matrix.submatrix(ref mat.M, c, d);
+                    Console.WriteLine("");
+                    Console.WriteLine("Отримана пiдматриця:");
+                    A.showArray();
+                    break;
+                case 3:
+                    Console.WriteLine("");
+                    Console.WriteLine("Поточний розмiр матрицi:");
+                    Console.WriteLine("кiлькiсть рядкiв: {0}", a);
+                    Console.WriteLine("кiлькiсть стовпцiв:{0}", b);
+                    Console.WriteLine("");
+                    do
+                    {
+                        Console.WriteLine("Введiть нову кiлькiсть рядкiв:");
+                        g = Convert.ToInt32(Console.ReadLine());
+                    } while (g < 1);
+                    do
+                    {
+                        Console.WriteLine("Введiть нову кiлькiсть стовпцiв:");
+                        h = Convert.ToInt32(Console.ReadLine());
+                    }while (h < 1);
+                    Matrix.newmatrix B = new Matrix.newmatrix(ref mat.M, g, h);
+                    Console.WriteLine("");
+                    Console.WriteLine("Отримана матриця:");
+                    B.shownewArray();
+                    break;
+            }
+        } while (choice != 4);
+    }
+    }
