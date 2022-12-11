@@ -1,0 +1,92 @@
+// Код головного меню
+namespace Віндовс_додаток
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Input_Click(object sender, EventArgs e)
+        {
+            Form2 newForm = new Form2();
+            newForm.Show();
+        }
+
+       
+    }
+}
+
+
+//.................................................................
+// Код діалогового вікна, яке відкривається при виборі команди Input
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+
+namespace Віндовс_додаток
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+        public int a;
+        public int b;
+        public int c;
+        public double result;
+
+        private void Result_Click(object sender, EventArgs e)
+        {
+            a = int.Parse(Radius.Text);
+            b = int.Parse(Height.Text);
+            c = int.Parse(Density.Text);
+            if (checkBox1.Checked)
+            {
+                maskedTextBox1.Mask = "00.00";
+                maskedTextBox1.Text = Volume().ToString();
+            }
+
+            if (checkBox2.Checked)
+            {
+                maskedTextBox2.Mask = "00.00";
+                maskedTextBox2.Text = Mass().ToString();
+            }
+        }
+        public double Volume()
+        {
+            if(a<=0||b<=0)
+            {
+                MessageBox.Show("Значення величин повинно бути додатнiм!");
+                this.Close();
+            }
+            result = (Math.PI *Math.Pow(a,2)*b)/3;
+            return result;
+        }
+        public double Mass()
+        {
+            if (a <= 0 || b <= 0||c<=0)
+            {
+                MessageBox.Show($"Значення величин повинно бути додатнiм!");
+                this.Close();
+            }
+            result = c * (Math.PI * Math.Pow(a, 2) * b) / 3;
+            return result;
+        }
+    }
+}
