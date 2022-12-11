@@ -82,7 +82,7 @@ namespace Віндовс_додаток
         {
             if (a <= 0 || b <= 0||c<=0)
             {
-                MessageBox.Show($"Значення величин повинно бути додатнiм!");
+                MessageBox.Show("Значення величин повинно бути додатнiм!");
                 this.Close();
             }
             result = c * (Math.PI * Math.Pow(a, 2) * b) / 3;
